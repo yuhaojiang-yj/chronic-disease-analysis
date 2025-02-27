@@ -12,7 +12,7 @@ from statsmodels.stats.outliers_influence import variance_inflation_factor
 os.makedirs("results", exist_ok=True)
 
 # Step 3: Load the cleaned dataset
-df = pd.read_csv("Cleaned_13100906.csv")
+df = pd.read_csv("data/raw/Cleaned_13100906.csv")
 
 # Step 4: Filter dataset for relevant health indicators
 relevant_indicators = [

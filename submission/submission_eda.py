@@ -9,7 +9,7 @@ import seaborn as sns
 os.makedirs("results", exist_ok=True)
 
 # Step 3: Load the cleaned dataset
-df = pd.read_csv("Cleaned_13100906.csv")
+df = pd.read_csv("data/raw/Cleaned_13100906.csv")
 
 # Step 4: Convert `REF_DATE` to datetime properly
 df["REF_DATE"] = pd.to_datetime(df["REF_DATE"], format="%Y", errors="coerce")
