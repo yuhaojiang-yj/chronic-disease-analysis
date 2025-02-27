@@ -25,24 +25,28 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: Run EDA script
-      run: |
-        python submission/submission_eda.py
+      run: python submission/submission_eda.py
 
     - name: Run Regression script
-      run: |
-        python submission/submission_regression.py
+      run: python submission/submission_regression.py
 
     - name: Run Fix Missing Data script
-      run: |
-        python submission/submission_fix_missing.py
-   
-    - name: Upload results
-      uses: actions/upload-artifact@v3
-      with:
-        name: results
-        path: results/  # Ensure this matches the directory in your Python scripts
+      run: python submission/submission_fix_missing.py
 
-    - name: Upload results
+    # Debugging step: Check if results directory exists
+    - name: Debug Results Directory
+      run: |
+        echo "Checking if results directory exists..."
+        if [ -d "results" ]; then
+          echo "✅ results/ directory exists!"
+          ls -lh results/
+        else
+          echo "❌ results/ directory does not exist!"
+          exit 1  # Stop workflow if results/ is missing
+        fi
+
+    # Upload results directory if it exists
+    - name: Upload Results
       uses: actions/upload-artifact@v3
       with:
         name: results
