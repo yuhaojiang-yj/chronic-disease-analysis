@@ -35,6 +35,12 @@ jobs:
     - name: Run Fix Missing Data script
       run: |
         python submission/submission_fix_missing.py
+   
+    - name: Upload results
+      uses: actions/upload-artifact@v3
+      with:
+        name: results
+        path: results/  # Ensure this matches the directory in your Python scripts
 
     - name: Upload results
       uses: actions/upload-artifact@v3
