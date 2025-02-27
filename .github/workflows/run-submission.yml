@@ -36,9 +36,8 @@ jobs:
       run: |
         python submission/submission_fix_missing.py
 
-    - name: Upload results as artifact
+    - name: Upload results
       uses: actions/upload-artifact@v3
       with:
         name: results
         path: results/
-        retention-days: 5
