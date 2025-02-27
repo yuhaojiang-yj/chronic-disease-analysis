@@ -8,7 +8,9 @@ import seaborn as sns
 
 # Step 2: Ensure the results directory exists
 os.makedirs("results", exist_ok=True)
-
+# Create a dummy file for debugging
+with open("results/debug_test.txt", "w") as f:
+    f.write("This is a test file to check if results/ exists in GitHub Actions.")
 # Step 3: Load the cleaned dataset
 df = pd.read_csv("data/raw/Cleaned_13100906.csv")
 
