@@ -33,7 +33,7 @@ jobs:
     - name: Run Fix Missing Data script
       run: python submission/submission_fix_missing.py
 
-    # Debugging step: Print the full directory structure before uploading artifacts
+    # Debugging step: Print directory structure
     - name: Debug Full Directory Listing
       run: |
         echo "📁 Listing all files and folders in the workspace:"
@@ -44,12 +44,12 @@ jobs:
           ls -lh results/
         else
           echo "❌ results/ directory is missing!"
-          exit 1  # Stop workflow if results/ is missing
+          exit 1
         fi
 
-    # Upload results directory if it exists
+    # ✅ Fixed: Use upload-artifact@v4
     - name: Upload Results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: results
         path: ./results/
