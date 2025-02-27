@@ -1,0 +1,4 @@
+sources:
+  - name: Cleaned_13100906.csv
+    description: "Chronic disease dataset from Stats Canada, cleaned version"
+    link: "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=13100906"

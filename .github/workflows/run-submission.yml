@@ -1,0 +1,43 @@
+name: Run submission
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out the repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.8"
+
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Run EDA script
+      run: |
+        python submission/submission_eda.py
+
+    - name: Run Regression script
+      run: |
+        python submission/submission_regression.py
+
+    - name: Run Fix Missing Data script
+      run: |
+        python submission/submission_fix_missing.py
+
+    - name: Upload results
+      uses: actions/upload-artifact@v2
+      with:
+        name: results
+        path: results
