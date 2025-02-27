@@ -12,12 +12,12 @@ jobs:
 
     steps:
     - name: Check out the repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
-        python-version: "3.8"
+        python-version: "3.9"
 
     - name: Install dependencies
       run: |
@@ -36,8 +36,9 @@ jobs:
       run: |
         python submission/submission_fix_missing.py
 
-    - name: Upload results
+    - name: Upload results as artifact
       uses: actions/upload-artifact@v3
       with:
         name: results
-        path: results
+        path: results/
+        retention-days: 5
